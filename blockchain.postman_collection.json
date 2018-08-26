@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "d612f01a-ff5c-412c-b631-35fc6b5a9793",
+		"name": "blockchain",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get chain",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "ein",
+							"value": "621721435",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "pin",
+							"value": "001",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/chain",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"chain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New transaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"author\": \"Tom\",\n\t\"content\": \"Pipirolo\"\n}"
+				},
+				"url": {
+					"raw": "localhost:5000/new_trans",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"new_trans"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mine",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:5000/mine",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"mine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pending transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:5000/pending_tx",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"pending_tx"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
