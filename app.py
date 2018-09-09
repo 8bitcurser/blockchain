@@ -13,6 +13,7 @@ blockchain = BlockChain()
 
 @app.route('/new_trans', methods=['POST'])
 def new_trans():
+    """Include a new unverified transaction to the chain."""
     tx_data = request.get_json()
     required_fields = ['author', 'content']
     for field in required_fields:
@@ -33,7 +34,6 @@ def get_chain():
         "length": len(chain_data),
         "chain": chain_data
     }
-    print(peers)
     return dumps(ret)
 
 
