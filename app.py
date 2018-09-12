@@ -4,7 +4,7 @@ from time import time
 from block import Block, BlockChain
 from flask import Flask, request
 from helpers import consensus, peers
-
+from textract import process
 
 app = Flask(__name__)
 
@@ -19,6 +19,9 @@ def new_trans():
     for field in required_fields:
         if not tx_data.get(field):
             return "Invalid transaction data", 404
+    if '.pdf' in tx_data['file']:
+        content = process(tx_data['file'])
+        tx_data['content'] = content
     tx_data["timestamp"] = time()
     blockchain.add_new_transaction(tx_data)
     return "Success", 202
