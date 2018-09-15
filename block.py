@@ -50,7 +50,7 @@ class BlockChain:
         Arguments:
             block -- Block class instance.
         """
-        block.nonce = 0
+        block.nonce = 2
         block_hash = block.compute_hash()
         while not block_hash.startswith('0' * self.pow_difficulty):
             block.nonce += 1
