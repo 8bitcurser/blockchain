@@ -1,6 +1,6 @@
 # BlockChain POC
-> The purpose of this project is to create a simple BlockChain structure that
-> runs with Flask, allowing different peers to mine and attach transactions to it
+> The purpose of this project is to create a simple public 1.0 BlockChain structure that
+> runs with Flask, allowing different nodes/peers to add transactions.
 
 ***
 ### Future work
@@ -17,10 +17,11 @@ All this features will be added in the course of two months.
 #### Requirements
 At the moment you will need:
 
-- Python2 / Python3 (I **highly** recommend python3 due to its crypto libraries)
-- Pip
-- Flask library
-- Requests library
+- Docker
+- Python3
+
+> We will use multiple libraries that are detailed in the documentation but no installation is need given that
+> the docker container takes care of it.
 
 ***
 #### Documentation used
