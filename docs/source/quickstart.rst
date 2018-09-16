@@ -61,8 +61,9 @@ Locally
    Once PIP is done installing all the python packages, we will have to install
    textract. Following `THIS`_ tutorial.
 
-.. _THIS: https://textract.readthedocs.io/en/latest/installation.html
+   Ater textract installation its done we are ready to run the
+   blockchain.
 
-Ater textract installation its all set and done, we are ready to run the blockchain.
+   .. _THIS: https://textract.readthedocs.io/en/latest/installation.html
 
 
