@@ -33,14 +33,14 @@ Building the Blockchain
    Once the repository has been cloned we can either build the docker image or
    run it locally
 
-^^^^^^^
+^^^^^^
 Docker
-^^^^^^^
+^^^^^^
 
    Docker install only needs one command::
 
       >> cd /path/to/project/blockchain
-      >> docker build -f docker/Dockerfile
+      >> docker build -f docker/Dockerfile -t blockchain:latest
 
    Thats it, we just have to wait for the image to finish building.
    The advantage on this approach is that we are not installing anything on our
@@ -67,3 +67,33 @@ Locally
    .. _THIS: https://textract.readthedocs.io/en/latest/installation.html
 
 
+======================
+Running the Blockchain
+======================
+
+^^^^^^
+Docker
+^^^^^^
+
+   If you built the docker image, we just have to run it and thats that by
+   doing::
+      
+      >> docker run blockchain
+
+   And thats it. The blockchain is up and running at the port XXXX.
+
+^^^^^^^
+Locally
+^^^^^^^
+  
+   Running the project locally demands a few extra steps::
+
+      >> cd /path/to/project/blockchain/src
+      >> export FLASK_APP=app.py
+      >> flask run 
+
+   And thats it!
+
+
+Congratulations you have build and run the blockchain POC, now its time to use
+it!
