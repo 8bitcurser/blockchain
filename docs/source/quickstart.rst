@@ -20,8 +20,49 @@ Requirements
 .. _Docker: https://docs.docker.com/install/#supported-platforms
 
 
-===================
-Running the Project
-===================
+=======================
+Building the Blockchain
+=======================
+
+   Before we run anything we need to download the project::
+
+
+      >> git clone https://github.com/tvukasovic/blockchain
+
+
+   Once the repository has been cloned we can either build the docker image or
+   run it locally
+
+^^^^^^^
+Docker
+^^^^^^^
+
+   Docker install only needs one command::
+
+      >> cd /path/to/project/blockchain
+      >> docker build -f docker/Dockerfile
+
+   Thats it, we just have to wait for the image to finish building.
+   The advantage on this approach is that we are not installing anything on our
+   local machines we build everything inside the container, once we are done we
+   can delete it without having any side effects or having packages that we
+   won't use in the future.
+
+
+^^^^^^^
+Locally
+^^^^^^^
+
+   To make the local installation we will need to run the following commands::
+
+      >> cd /path/to/project/blockchain/docker
+      >> pip install requirements.txt
+
+   Once PIP is done installing all the python packages, we will have to install
+   textract. Following `THIS`_ tutorial.
+
+.. _THIS: https://textract.readthedocs.io/en/latest/installation.html
+
+Ater textract installation its all set and done, we are ready to run the blockchain.
 
 
