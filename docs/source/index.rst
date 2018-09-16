@@ -20,6 +20,7 @@ with Flask micro web framework and Docker.
    :caption: Contents:
 
    quickstart
+   running_the_blockchain
 
 Indices and tables
 ==================
