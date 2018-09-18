@@ -31,6 +31,7 @@ class BlockChain:
     """Blockchain abstraction class that works with Block class."""
     # Dificulty of the Proof of work algorithim (PoW)
     pow_difficulty = 2
+    peers = set()
 
     def __init__(self):
         """Initialization of class."""
@@ -89,7 +90,7 @@ class BlockChain:
         self.unconfirmed_transactions.append(transaction)
 
     def mine(self):
-        """Add the pending transactions to the block and validating the PoW."""
+        """Add the pending transactions to the block, validate the PoW."""
         if self.unconfirmed_transactions:
             last_block = self.last_block
             new_block = Block(index=last_block.index+1,
@@ -103,6 +104,7 @@ class BlockChain:
             return new_block.index
 
     def announce_new_block(self, block):
+        print(dir(self))
         for peer in self.peers:
             url = "http://{}/add_block".format(peer)
             post(url, data=dumps(block.__dict__, sort_keys=True))

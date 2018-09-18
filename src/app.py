@@ -3,7 +3,7 @@ from time import time
 
 from block import Block, BlockChain
 from flask import Flask, request
-from helpers import consensus, peers
+from helpers import consensus
 from textract import process
 
 app = Flask(__name__)
@@ -29,7 +29,7 @@ def new_trans():
 
 @app.route('/chain', methods=['GET'])
 def get_chain():
-    consensus(request.host, blockchain)
+    consensus(request.host, blockchain, blockchain.peers)
     chain_data = []
     for block in blockchain.chain:
         chain_data.append(block.__dict__)
@@ -65,7 +65,7 @@ def register_new_peers():
         ret = "Invalid data", 400
     else:
         for node in nodes:
-            peers.add(node)
+            blockchain.peers.add(node)
         ret = "Success", 201
     return ret
 

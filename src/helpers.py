@@ -1,9 +1,7 @@
 from requests import get
 
-peers = set()
 
-
-def consensus(host, blockchain):
+def consensus(host, blockchain, peers):
     """If a longer valid chain is found, our chain is replaced with it."""
     longest_chain = None
     current_len = len(blockchain.chain)
