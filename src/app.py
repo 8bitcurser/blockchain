@@ -33,6 +33,7 @@ def new_trans():
 
 @app.route('/chain', methods=['GET'])
 def get_chain():
+    """Return blockchain after acquiring the longest."""
     consensus(request.host, blockchain, blockchain.peers)
     chain_data = []
     for block in blockchain.chain:
@@ -46,6 +47,7 @@ def get_chain():
 
 @app.route('/mine', methods=['GET'])
 def mine_unconfirmed_transactions():
+    """Mine transactions to be appended to the blockchain as blocks"""
     result = blockchain.mine()
     if not result:
         ret = "No transactions to mine"
@@ -57,12 +59,14 @@ def mine_unconfirmed_transactions():
 # endpoint to query unconfirmed transactions
 @app.route('/pending_tx')
 def get_pending_tx():
+    """Return all transactions that have not been mined yet."""
     return dumps(blockchain.unconfirmed_transactions)
 
 
 # endpoint to add new peers to the network.
 @app.route('/add_nodes', methods=['POST'])
 def register_new_peers():
+    """Register a new host to the pool of peers."""
     nodes = request.get_json()
     nodes = nodes['hosts']
     if not nodes:
