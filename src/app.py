@@ -15,15 +15,19 @@ blockchain = BlockChain()
 def new_trans():
     """Include a new unverified transaction to the chain."""
     tx_data = request.get_json()
-    required_fields = ['author', 'content']
+    required_fields = ('author', 'content')
+
     for field in required_fields:
         if not tx_data.get(field):
             return "Invalid transaction data", 404
+
+    # Extract text content from PDF file.
     if '.pdf' in tx_data['file']:
         content = process(tx_data['file'])
         tx_data['content'] = content
     tx_data["timestamp"] = time()
     blockchain.add_new_transaction(tx_data)
+
     return "Success", 202
 
 

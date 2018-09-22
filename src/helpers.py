@@ -2,7 +2,13 @@ from requests import get
 
 
 def consensus(host, blockchain, peers):
-    """If a longer valid chain is found, our chain is replaced with it."""
+    """Consensus algorithm replace our chain for a longer one if exists.
+    Arguments:
+        host -- (str) our host url.
+        blockchain -- (obj) blockchain instance.
+        peers -- (set) collection of all the blockchain contributors.
+
+    """
     longest_chain = None
     current_len = len(blockchain.chain)
     ret = True

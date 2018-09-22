@@ -90,7 +90,10 @@ class BlockChain:
         self.unconfirmed_transactions.append(transaction)
 
     def mine(self):
-        """Add the pending transactions to the block, validate the PoW."""
+        """Add the pending transactions to the block, validate the PoW.
+        Arguments:
+            self -- (obj) blockchain object instance.
+        """
         if self.unconfirmed_transactions:
             last_block = self.last_block
             new_block = Block(index=last_block.index+1,
@@ -104,14 +107,19 @@ class BlockChain:
             return new_block.index
 
     def announce_new_block(self, block):
-        print(dir(self))
+        """Announce addition of a new block to all the peers.
+        Arguments:
+            self -- (obj) blockchain object instance.
+            block -- (obj) block object instance.
+        """
         for peer in self.peers:
             url = "http://{}/add_block".format(peer)
             post(url, data=dumps(block.__dict__, sort_keys=True))
 
     @property
     def last_block(self):
-        """Return last block from the chain."""
+        """Return last block from the chain.
+        Arguments:
+            self -- (obj) blockchain object instance.
+        """
         return self.chain[-1]
-
-
