@@ -1,9 +1,12 @@
-FROM alpine:latest
-RUN apk add --no-cache --virtual .build-deps g++ python3-dev libffi-dev openssl-dev && \
-    apk add --no-cache --update python3 && \
-    pip3 install --upgrade pip setuptools
-RUN pip3 install flask
+FROM ubuntu
+RUN apt-get -y update && apt -y install python python-pip swig libpulse-dev libxml2-dev libxslt1-dev antiword poppler-utils pstotext tesseract-ocr flac ffmpeg lame libmad0 libsox-fmt-mp3 sox
+
+RUN pip install flask requests textract
 
 WORKDIR src
-ADD src/ . 
-RUN ls
+ADD src/ .
+ENV  PYTHONPATH="${PYTHONPATH}:src/"
+
+EXPOSE 5000
+ENV FLASK_APP app.py
+CMD flask run --host=0.0.0.0
