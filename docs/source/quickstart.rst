@@ -40,7 +40,7 @@ Docker
    Docker install only needs one command::
 
       >> cd /path/to/project/blockchain
-      >> docker build -f docker/Dockerfile -t blockchain:latest
+      >> docker build . -f docker/Dockerfile -t blockchain
 
    Thats it, we just have to wait for the image to finish building.
    The advantage on this approach is that we are not installing anything on our
@@ -78,9 +78,14 @@ Docker
    If you built the docker image, we just have to run it and thats that by
    doing::
       
-      >> docker run blockchain
+      >> docker run -p 5000:5000 blockchain
 
-   And thats it. The blockchain is up and running at the port XXXX.
+   And thats it. The blockchain is up and running at the port 5000.
+
+   You can try it by going to the browser or to Postman and making a GET
+   request to::
+      
+      localhost:5000/chain 
 
 ^^^^^^^
 Locally
