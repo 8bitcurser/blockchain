@@ -21,6 +21,7 @@ with Flask micro web framework and Docker.
 
    quickstart
    running_the_blockchain
+   detailed_info
 
 Indices and tables
 ==================
