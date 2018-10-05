@@ -1,10 +1,16 @@
+import sys
+from datetime import datetime as dt
+from hashlib import sha256
 from json import dumps
-from time import time
 
 from block import Block, BlockChain
 from flask import Flask, request
 from helpers import consensus
 from textract import process
+
+# Force system to use utf8
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 app = Flask(__name__)
 
@@ -16,19 +22,25 @@ def new_trans():
     """Include a new unverified transaction to the chain."""
     tx_data = request.get_json()
     required_fields = ('author', 'content')
-
+    timestamp = dt.now()
+    flag = True
     for field in required_fields:
         if not tx_data.get(field):
-            return "Invalid transaction data", 404
-
-    # Extract text content from PDF file.
-    if '.pdf' in tx_data['file']:
-        content = process(tx_data['file'])
-        tx_data['content'] = content
-    tx_data["timestamp"] = time()
-    blockchain.add_new_transaction(tx_data)
-
-    return "Success", 202
+            flag = False
+            break
+    if flag:
+        tx_data['timestamp'] = dt.strftime(timestamp, '%Y%m%d%H%M%S')
+        # Extract text content from PDF file.
+        if '.pdf' in tx_data['file']:
+            content = process(tx_data['file'])
+            content = sha256(content).hexdigest()
+            tx_data['content'] = content
+        blockchain.add_new_transaction(tx_data)
+        msg = 'Transaction added at: {}'.format(timestamp)
+        ret = msg, 202
+    else:
+        ret = "Invalid transaction data", 404
+    return ret
 
 
 @app.route('/chain', methods=['GET'])
@@ -91,7 +103,3 @@ def validate_and_add_block():
         ret, code = "Block added to the chain", 201
 
     return ret, code
-
-
-#  if __name__ == "__main__":
-    #  app.run(debug=True, host='0.0.0.0', port=5000)
