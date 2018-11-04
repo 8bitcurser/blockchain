@@ -7,8 +7,8 @@
 
 - [ ] Implement ssh key validation
 - [ ] Add tests
-- [ ] Create documentation in readthedocs
-- [ ] Dockerize project
+- [x] Create documentation in readthedocs
+- [x] Dockerize project
 - [ ] Ngrok implementation, tests and tutorial
 
 All this features will be added in the course of two months. 
@@ -26,3 +26,6 @@ At the moment you will need:
 ***
 #### Documentation used
 - [Tutorial](https://freestartupkits.com/articles/technology/cryptocurrency-news-and-tips/how-to-build-a-blockchain-application-python/)
+
+#### Documentation generated
+- [BlockchainPOC Docs](https://blockchain-poc.readthedocs.io/en/latest/index.html)
