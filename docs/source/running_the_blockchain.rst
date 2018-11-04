@@ -4,9 +4,9 @@ Running the blockchain!
 
 Now is where the fun begins!
 
-   Lets start by obtaining a fresh chain. Go to postman and run this endpoint::
+Lets start by obtaining a fresh chain. Go to postman and run this endpoint::
 
-      localhost:5000/chain
+   localhost:5000/chain
 
 You should see something like this:
       
