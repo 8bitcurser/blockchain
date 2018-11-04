@@ -26,3 +26,6 @@ At the moment you will need:
 ***
 #### Documentation used
 - [Tutorial](https://freestartupkits.com/articles/technology/cryptocurrency-news-and-tips/how-to-build-a-blockchain-application-python/)
+
+#### Documentation generated
+- [BlockchainPOC Docs](https://blockchain-poc.readthedocs.io/en/latest/index.html)
