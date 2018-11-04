@@ -7,8 +7,8 @@
 
 - [ ] Implement ssh key validation
 - [ ] Add tests
-- [ ] Create documentation in readthedocs
-- [ ] Dockerize project
+- [x] Create documentation in readthedocs
+- [x] Dockerize project
 - [ ] Ngrok implementation, tests and tutorial
 
 All this features will be added in the course of two months. 
