@@ -87,7 +87,8 @@ class BlockChain:
         Arguments:
             transaction -- (str) transaction
         """
-        self.unconfirmed_transactions.append(transaction)
+        if transaction not in self.unconfirmed_transactions:
+            self.unconfirmed_transactions.append(transaction)
 
     def mine(self):
         """Add the pending transactions to the block, validate the PoW.
