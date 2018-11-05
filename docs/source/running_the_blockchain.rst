@@ -2,7 +2,13 @@
 Running the blockchain!
 #######################
 
-Now is where the fun begins!
+Now is where the fun begins! This example follows the local instalation result.
+If you are using the docker instalation the only difference is that the PDF
+files uploaded to the blockchain should be placed inside the files folder of
+the project. And at the body of the request at the new_transaction endpoint you
+will write something like::
+      
+      "file": "files/<name-of-file>.pdf"
 
 Lets start by obtaining a fresh chain. Go to postman and run this endpoint::
 

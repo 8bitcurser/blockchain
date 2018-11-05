@@ -10,6 +10,7 @@ Requirements
 ============
 
 * `Docker`_
+* `Docker-compose`_
 * `Python3`_
 * `PIP`_
 * `GIT`_
@@ -18,7 +19,7 @@ Requirements
 .. _PIP: https://pip.pypa.io/en/stable/installing/
 .. _GIT: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 .. _Docker: https://docs.docker.com/install/#supported-platforms
-
+.. _Docker-compose: https://docs.docker.com/compose/install/#install-compose
 
 =======================
 Building the Blockchain
@@ -40,7 +41,7 @@ Docker
    Docker install only needs one command::
 
       >> cd /path/to/project/blockchain
-      >> docker build . -f docker/Dockerfile -t blockchain
+      >> docker-compose build -f docker/Dockerfile blockchain
 
    Thats it, we just have to wait for the image to finish building.
    The advantage on this approach is that we are not installing anything on our
@@ -78,14 +79,19 @@ Docker
    If you built the docker image, we just have to run it and thats that by
    doing::
       
-      >> docker run -p 5000:5000 blockchain
+      >> docker-compose -f docker/docker-compose.yml up
 
    And thats it. The blockchain is up and running at the port 5000.
 
    You can try it by going to the browser or to Postman and making a GET
    request to::
       
-      localhost:5000/chain 
+      localhost:5000/chain
+
+  You may also try to start a bash session inside the docker container to check
+  the files by running the command::
+ 
+       >> docker-compose -f docker/docker-compose.yml run blockchain bash
 
 
 ^^^^^^^
